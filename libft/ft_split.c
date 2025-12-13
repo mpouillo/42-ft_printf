@@ -6,7 +6,7 @@
 /*   By: mpouillo <mpouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:02:35 by mpouillo          #+#    #+#             */
-/*   Updated: 2025/11/16 10:21:44 by mpouillo         ###   ########.fr       */
+/*   Updated: 2025/12/13 08:52:47 by mpouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ static char	**alloc_arr(char **arr, char const *s, char c)
 			break ;
 		while (s[i + sz] != c && s[i + sz])
 			sz++;
-		arr[j] = malloc(sizeof(char) * (sz + 1));
+		arr[j] = ft_calloc(sz + 1, sizeof(char));
 		if (!arr[j])
 			return (free_all(arr, j));
 		ft_strlcpy(arr[j], &s[i], sz + 1);
 		j++;
 		i += sz;
 	}
-	arr[j] = NULL;
 	return (arr);
 }
 
@@ -81,7 +80,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	arr = malloc(sizeof(char *) * (get_size(s, c) + 1));
+	arr = ft_calloc(get_size(s, c) + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
 	arr = alloc_arr(arr, s, c);

@@ -65,7 +65,6 @@ RED     := \033[1;31m
 GREEN   := \033[1;32m
 YELLOW  := \033[1;33m
 CYAN    := \033[1;36m
-UNDER   := \033[4m
 RESET   := \033[0m
 
 .DEFAULT_GOAL = all
@@ -94,7 +93,7 @@ $(DEP_DIR):
 	mkdir -p $(DEP_DIR)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
-	@echo "$(YELLOW)COMPILING $(GREEN)$< $(YELLOW)⮞ $(GREEN)$@$(RESET)"
+	@echo "$(YELLOW)COMPILING $(GREEN)$< $(YELLOW)-> $(GREEN)$@$(RESET)"
 	$(CC) $(CFLAGS) -c "$<" -o "$@" -MMD -MP -MF "$(DEP_DIR)/$(@F:.o=.d)"
 
 clean:

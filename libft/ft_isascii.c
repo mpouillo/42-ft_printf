@@ -6,11 +6,11 @@
 /*   By: mpouillo <mpouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:48:41 by mpouillo          #+#    #+#             */
-/*   Updated: 2025/11/19 12:02:59 by mpouillo         ###   ########.fr       */
+/*   Updated: 2025/12/13 08:50:11 by mpouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	return ((unsigned) c <= 0x7F);
+	return ((unsigned) c <= 127);
 }

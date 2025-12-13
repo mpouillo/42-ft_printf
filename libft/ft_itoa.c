@@ -6,7 +6,7 @@
 /*   By: mpouillo <mpouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:02:53 by mpouillo          #+#    #+#             */
-/*   Updated: 2025/11/16 10:25:00 by mpouillo         ###   ########.fr       */
+/*   Updated: 2025/12/13 08:50:05 by mpouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 
 	nbr = (long) n;
 	len = count(nbr);
-	s = malloc(sizeof(char) * (len + 1));
+	s = ft_calloc(len + 1, sizeof(char));
 	if (!s)
 		return (NULL);
 	if (nbr < 0)
@@ -50,7 +50,6 @@ char	*ft_itoa(int n)
 	}
 	else if (nbr == 0)
 		s[0] = '0';
-	s[len] = '\0';
 	while (nbr > 0)
 	{
 		s[(len--) - 1] = nbr % 10 + '0';
