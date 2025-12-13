@@ -44,12 +44,16 @@ To compile with bonuses, run:
 make bonus
 ```
 
-To use the library, compile with the following command:
+To use the library, include it with:
+```c
+#include "ft_printf.h"
+```
+and compile with the following command:
 ```shell
-cc -Wall -Werror -Wextra your_files.c -L -ftprintf
+cc -Wall -Werror -Wextra your_files.c -L. -lftprintf
 ```
 
 ### Resources:
 
 - [Project link](https://projects.intra.42.fr/projects/42cursus-ft_printf) (requires access to the 42 intra)
-- AI was used to create tests to reproduce the original printf's behavior, but not to generate any code for the library.
+- AI was used to create tests to reproduce the original printf's behavior, but not to generate any code for the library itself.
