@@ -28,45 +28,45 @@ SRCS :=			$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/utils_sign.c \
 				$(SRC_DIR)/utils_compare.c
 
-LIBFT_PATH		:= libft
-LIBFT			:= $(LIBFT_PATH)/libft.a
+LIBFT_DIR		:= libft
+LIBFT			:= $(LIBFT_DIR)/libft.a
 
-LIBFT_INCL 		:= $(LIBFT_PATH)/libft.h
+LIBFT_INCL 		:= $(LIBFT_DIR)/libft.h
 
-LIBFT_SRCS :=	$(LIBFT_PATH)/ft_isalpha.c \
-				$(LIBFT_PATH)/ft_isdigit.c \
-				$(LIBFT_PATH)/ft_isalnum.c \
-				$(LIBFT_PATH)/ft_isascii.c \
-				$(LIBFT_PATH)/ft_isprint.c \
-				$(LIBFT_PATH)/ft_strlen.c \
-				$(LIBFT_PATH)/ft_memset.c \
-				$(LIBFT_PATH)/ft_bzero.c \
-				$(LIBFT_PATH)/ft_memcpy.c \
-				$(LIBFT_PATH)/ft_memmove.c \
-				$(LIBFT_PATH)/ft_strlcpy.c \
-				$(LIBFT_PATH)/ft_strlcat.c \
-				$(LIBFT_PATH)/ft_toupper.c \
-				$(LIBFT_PATH)/ft_tolower.c \
-				$(LIBFT_PATH)/ft_strchr.c \
-				$(LIBFT_PATH)/ft_strrchr.c \
-				$(LIBFT_PATH)/ft_strncmp.c \
-				$(LIBFT_PATH)/ft_memchr.c \
-				$(LIBFT_PATH)/ft_memcmp.c \
-				$(LIBFT_PATH)/ft_strnstr.c \
-				$(LIBFT_PATH)/ft_atoi.c \
-				$(LIBFT_PATH)/ft_calloc.c \
-				$(LIBFT_PATH)/ft_strdup.c \
-				$(LIBFT_PATH)/ft_substr.c \
-				$(LIBFT_PATH)/ft_strjoin.c \
-				$(LIBFT_PATH)/ft_strtrim.c \
-				$(LIBFT_PATH)/ft_split.c \
-				$(LIBFT_PATH)/ft_itoa.c \
-				$(LIBFT_PATH)/ft_strmapi.c \
-				$(LIBFT_PATH)/ft_striteri.c \
-				$(LIBFT_PATH)/ft_putchar_fd.c \
-				$(LIBFT_PATH)/ft_putstr_fd.c \
-				$(LIBFT_PATH)/ft_putendl_fd.c \
-				$(LIBFT_PATH)/ft_putnbr_fd.c
+LIBFT_SRCS :=	$(LIBFT_DIR)/ft_isalpha.c \
+				$(LIBFT_DIR)/ft_isdigit.c \
+				$(LIBFT_DIR)/ft_isalnum.c \
+				$(LIBFT_DIR)/ft_isascii.c \
+				$(LIBFT_DIR)/ft_isprint.c \
+				$(LIBFT_DIR)/ft_strlen.c \
+				$(LIBFT_DIR)/ft_memset.c \
+				$(LIBFT_DIR)/ft_bzero.c \
+				$(LIBFT_DIR)/ft_memcpy.c \
+				$(LIBFT_DIR)/ft_memmove.c \
+				$(LIBFT_DIR)/ft_strlcpy.c \
+				$(LIBFT_DIR)/ft_strlcat.c \
+				$(LIBFT_DIR)/ft_toupper.c \
+				$(LIBFT_DIR)/ft_tolower.c \
+				$(LIBFT_DIR)/ft_strchr.c \
+				$(LIBFT_DIR)/ft_strrchr.c \
+				$(LIBFT_DIR)/ft_strncmp.c \
+				$(LIBFT_DIR)/ft_memchr.c \
+				$(LIBFT_DIR)/ft_memcmp.c \
+				$(LIBFT_DIR)/ft_strnstr.c \
+				$(LIBFT_DIR)/ft_atoi.c \
+				$(LIBFT_DIR)/ft_calloc.c \
+				$(LIBFT_DIR)/ft_strdup.c \
+				$(LIBFT_DIR)/ft_substr.c \
+				$(LIBFT_DIR)/ft_strjoin.c \
+				$(LIBFT_DIR)/ft_strtrim.c \
+				$(LIBFT_DIR)/ft_split.c \
+				$(LIBFT_DIR)/ft_itoa.c \
+				$(LIBFT_DIR)/ft_strmapi.c \
+				$(LIBFT_DIR)/ft_striteri.c \
+				$(LIBFT_DIR)/ft_putchar_fd.c \
+				$(LIBFT_DIR)/ft_putstr_fd.c \
+				$(LIBFT_DIR)/ft_putendl_fd.c \
+				$(LIBFT_DIR)/ft_putnbr_fd.c
 
 OBJS			:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS			:= $(patsubst $(OBJ_DIR)/%.o, $(DEP_DIR)/%.d, $(OBJS))
@@ -104,18 +104,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) $(DEP_DIR)
 	$(CC) $(CFLAGS) -c "$<" -o "$@" -MMD -MP -MF "$(DEP_DIR)/$(@F:.o=.d)"
 
 clean:
-	@echo "$(RED)CLEANING FT_PRINTF BUILD DIRECTORIES...$(RESET)"
+	@echo "$(RED)CLEANING BUILD DIRECTORIES...$(RESET)"
 	$(RM) -r $(BUILD_DIR)
-	@echo "$(RED)CLEANING EXTRA FILES...$(RESET)"
-	$(RM) a.out printf.h.gch
-	@echo "$(RED)CLEANING LIBFT BUILD DIRECTORIES...$(RESET)"
-	$(MAKE) -C libft clean
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@echo "$(RED)CLEANING FT_PRINTF ARCHIVE FILE...$(RESET)"
-	$(RM) $(NAME) $(BONUS)
-	@echo "$(RED)CLEANING LIBFT ARCHIVE FILE...$(RESET)"
-	$(MAKE) -C libft fclean
+	@echo "$(RED)CLEANING ARCHIVE FILES...$(RESET)"
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

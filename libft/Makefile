@@ -99,8 +99,6 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 clean:
 	@echo "$(RED)CLEANING BUILD DIRECTORIES...$(RESET)"
 	$(RM) -r $(BUILD_DIR)
-	@echo "$(RED)CLEANING EXTRA FILES...$(RESET)"
-	$(RM) a.out libft.h.gch
 
 fclean: clean
 	@echo "$(RED)CLEANING ARCHIVE FILE...$(RESET)"
